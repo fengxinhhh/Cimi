@@ -25,7 +25,7 @@ module.exports = async function(options) {
   //写入新版本号，更新项目文件
   function writeNewVersion() {
     const packageJson = fs.readFileSync(
-      path.join(__dirname, './package.json'),
+      path.join(path.resolve(process.cwd(), 'package.json')),
       'utf8'
     )
     const newPackageJson = packageJson.replace(
