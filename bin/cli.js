@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+'use strict'
+
 const program = require('commander')
 const { green, red } = require('chalk')
 const { version } = require('../package.json')
