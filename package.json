@@ -1,0 +1,28 @@
+{
+  "name": "cimi",
+  "version": "1.0.3",
+  "description": "A tool for fully automatic publishing of npm packages",
+  "main": "index.js",
+  "bin": "./bin/cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fengxinhhh/Cimi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fengxinhhh/Cimi/issues"
+  },
+  "homepage": "https://github.com/fengxinhhh/Cimi#readme",
+  "devDependencies": {
+    "eslint": "^8.23.0"
+  },
+  "dependencies": {
+    "commander": "^9.4.0",
+    "inquirer": "^9.1.1"
+  }
+}
