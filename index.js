@@ -3,7 +3,6 @@ const path = require('path')
 const { exec } = require('child_process')
 const { green, red, cyan } = require('chalk')
 const getVersion = require('./getVersion')
-const { error } = require('console')
 
 module.exports = async function(options) {
   //获取新的版本号
@@ -34,7 +33,7 @@ module.exports = async function(options) {
       `"version": "${newVersion}"`
     )
     fs.writeFileSync(path.join(__dirname, './package.json'), newPackageJson)
-    console.log(green('\nUpdate package.json success!'))
+    console.log(green(`\nUpdate ${projectName} package.json success!`))
   }
   //执行整个流程的命令
   function execShell() {
@@ -70,9 +69,10 @@ module.exports = async function(options) {
       childExec.stderr.pipe(process.stderr)
     })
   }
-  // try {
+
   const [type, branch = 'master'] = options.args
-  const projectVersion = await getVersion()
+  const { projectVersion, projectName } = await getVersion()
+  console.log(green(`Start replase project ${projectName}`))
   const newVersion = getNewVersion(projectVersion)
   writeNewVersion()
   console.log(green(`\nVersion: ${cyan(`${projectVersion} -> ${newVersion}`)}`))
@@ -80,8 +80,5 @@ module.exports = async function(options) {
     green(`\nCommit message: ${cyan(`${type} version to ${newVersion}" `)}`)
   )
   await execShell()
-  console.log(`\n${green('[ Cimi ]')} Release Success!\n`)
-  // } catch (err) {
-  // throw error
-  // }
+  console.log(`\n${green('[ Cimi ]')} Release ${projectName} Success!\n`)
 }

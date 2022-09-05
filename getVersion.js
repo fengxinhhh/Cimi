@@ -6,5 +6,8 @@ module.exports = async function() {
     path.join(__dirname, './package.json'),
     'utf8'
   )
-  return JSON.parse(packageJson).version
+  return {
+    projectVersion: JSON.parse(packageJson).version,
+    projectName: JSON.parse(packageJson).name,
+  }
 }
