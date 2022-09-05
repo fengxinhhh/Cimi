@@ -46,7 +46,7 @@ module.exports = async function(options) {
         `Commit and push to ${branch} branch`
       )}\n"`,
       'git add .',
-      `git commit -m "${type} version to ${newVersion}`,
+      `git commit -m "${type} version to ${newVersion}"`,
       `git push origin ${branch}`,
       `echo "\n${green('[ 2 / 3 ]')} ${cyan(
         `Tag and push tag to ${branch}`
