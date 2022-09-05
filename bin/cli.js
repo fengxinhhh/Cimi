@@ -2,6 +2,7 @@
 
 const program = require('commander')
 const { version } = require('../package.json')
+const { green, red } = require('chalk')
 const cimi = require('../index')
 
 program
