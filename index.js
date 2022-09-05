@@ -72,6 +72,7 @@ module.exports = async function(options) {
 
   const [type, branch = 'master'] = options.args
   const { projectVersion, projectName } = await getVersion()
+  console.log(projectVersion, projectName)
   console.log(green(`Start replase project ${projectName}`))
   const newVersion = getNewVersion(projectVersion)
   writeNewVersion()
