@@ -3,7 +3,7 @@ const path = require('path')
 
 module.exports = async function() {
   const packageJson = fs.readFileSync(
-    path.join(__dirname, './package.json'),
+    path.join(path.resolve(process.cwd(), 'package.json')),
     'utf8'
   )
   return {
