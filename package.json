@@ -1,28 +1,27 @@
 {
   "name": "cimi",
-  "version": "1.0.3",
+  "license": "MIT",
+  "version": "1.0.18",
   "description": "A tool for fully automatic publishing of npm packages",
-  "main": "index.js",
-  "bin": "./bin/cli.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "authors": {
+    "name": "fengxin",
+    "email": "1244200081@qq.com"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fengxinhhh/Cimi.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "scripts": {},
   "bugs": {
     "url": "https://github.com/fengxinhhh/Cimi/issues"
   },
   "homepage": "https://github.com/fengxinhhh/Cimi#readme",
+  "main": "index.js",
+  "bin": "./bin/cli.js",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "commander": "^9.4.0"
+  },
   "devDependencies": {
     "eslint": "^8.23.0"
   },
-  "dependencies": {
-    "commander": "^9.4.0",
-    "inquirer": "^9.1.1"
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
