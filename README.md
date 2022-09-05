@@ -48,3 +48,31 @@ npm i cimi -g
 # 本地安装cimi
 npm i cimi -D
 ```
+
+以下是`cimi -h`的输出：
+
+```
+Usage: cimi [options]
+
+Options:
+  -v, --version  output the version number
+  patch          patch your new npm package
+  minor          minor your new npm package
+  major          major your new npm package
+  -h, --help     display help for command
+
+  Tip:
+
+    You should run this script in the root directory of you project or run by npm scripts.
+
+  Examples:
+
+    $ cimi patch [branch] (default: master)
+    $ cimi minor [branch] (default: master)
+    $ cimi major [branch] (default: master)
+
+```
+
+## LICENSE
+
+[MIT](./LICENSE) © fengxin
