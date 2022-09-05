@@ -3,6 +3,7 @@ const path = require('path')
 const { exec } = require('child_process')
 const { green, red, cyan } = require('chalk')
 const getVersion = require('./getVersion')
+const { error } = require('console')
 
 module.exports = async function(options) {
   //获取新的版本号
@@ -69,12 +70,18 @@ module.exports = async function(options) {
       childExec.stderr.pipe(process.stderr)
     })
   }
-
+  // try {
   const [type, branch = 'master'] = options.args
   const projectVersion = await getVersion()
   const newVersion = getNewVersion(projectVersion)
   writeNewVersion()
   console.log(green(`\nVersion: ${cyan(`${projectVersion} -> ${newVersion}`)}`))
-  console.log(green(`${type} version to ${newVersion}"`))
+  console.log(
+    green(`\nCommit message: ${cyan(`${type} version to ${newVersion}" `)}`)
+  )
   await execShell()
+  console.log(`\n${green('[ Cimi ]')} Release Success!\n`)
+  // } catch (err) {
+  // throw error
+  // }
 }
