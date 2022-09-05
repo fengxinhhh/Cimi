@@ -74,10 +74,12 @@ module.exports = async function(options) {
   }
 
   const [type, branch = 'master'] = options.args
-  const projectVersion = await getVersion()
+  const { projectVersion, projectName } = await getVersion()
+  console.log(green(`Start to ${type} version to ${projectName}...`))
   const newVersion = getNewVersion(projectVersion)
   writeNewVersion()
   console.log(green(`\nVersion: ${cyan(`${projectVersion} -> ${newVersion}`)}`))
-  console.log(green(`${type} version to ${newVersion}"`))
+  console.log(green(`${type} ${projectName} version to ${newVersion}"`))
   await execShell()
+  console.log(`\n${green('[ Cimi ]')} Release ${projectName} Success!\n`)
 }
