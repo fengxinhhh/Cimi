@@ -79,7 +79,7 @@ module.exports = async function(options) {
   const newVersion = getNewVersion(projectVersion)
   writeNewVersion()
   console.log(green(`\nVersion: ${cyan(`${projectVersion} -> ${newVersion}`)}`))
-  console.log(green(`${type} ${projectName} version to ${newVersion}"`))
+  console.log(green(`${type} ${projectName} version to ${newVersion}`))
   await execShell()
   console.log(`\n${green('[ Cimi ]')} Release ${projectName} Success!\n`)
 }
