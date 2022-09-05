@@ -5,11 +5,6 @@ const { green, red, cyan } = require('chalk')
 const getVersion = require('./getVersion')
 
 module.exports = async function(options) {
-  const [type, branch = 'master'] = options.args
-  const projectVersion = await getVersion()
-  const newVersion = getNewVersion(projectVersion)
-  writeNewVersion()
-  await execShell()
   //获取新的版本号
   function getNewVersion(oldVersion) {
     const [major, minor, patch] = oldVersion.split('.')
@@ -40,6 +35,7 @@ module.exports = async function(options) {
     fs.writeFileSync(path.join(__dirname, './package.json'), newPackageJson)
     console.log(green('\nUpdate package.json success!'))
   }
+  //执行整个流程的命令
   function execShell() {
     const shellList = [
       `echo "\n${green('[ 1 / 3 ]')} ${cyan(
@@ -73,4 +69,12 @@ module.exports = async function(options) {
       childExec.stderr.pipe(process.stderr)
     })
   }
+
+  const [type, branch = 'master'] = options.args
+  const projectVersion = await getVersion()
+  const newVersion = getNewVersion(projectVersion)
+  writeNewVersion()
+  console.log(green(`\nVersion: ${cyan(`${projectVersion} -> ${newVersion}`)}`))
+  console.log(green(`${type} version to ${newVersion}"`))
+  await execShell()
 }
