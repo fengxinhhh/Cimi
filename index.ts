@@ -11,6 +11,7 @@ module.exports = async function(options) {
     if(patch.length > 2 && patch.includes('-beta')) {
       patch = patch.split('-')[0];
     }
+    console.log(type,14)
     switch (type) {
       case 'patch':
         return `${major}.${minor}.${+patch + 1}`
