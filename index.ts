@@ -9,7 +9,7 @@ module.exports = async function(options) {
   function getNewVersion(oldVersion) {
     let [major, minor, patch] = oldVersion.split('.')
     if(patch.length > 2 && patch.includes('-beta')) {
-      patch = patch.split('-')[0];
+      patch = Number(patch.split('-')[0]);
     }
     switch (type) {
       case 'patch':
