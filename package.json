@@ -1,7 +1,7 @@
 {
   "name": "cimi",
   "license": "MIT",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "A tool for fully automatic publishing of npm packages",
   "authors": {
     "name": "fengxin",
@@ -9,7 +9,9 @@
   },
   "files": [
     ".github",
-    "README.md"
+    "README.md",
+    "lib",
+    "bin"
   ],
   "scripts": {
     "patch": "cimi patch main",
