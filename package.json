@@ -1,7 +1,7 @@
 {
   "name": "cimi",
   "license": "MIT",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "A tool for fully automatic publishing of npm packages",
   "authors": {
     "name": "fengxin",
@@ -16,7 +16,10 @@
   "scripts": {
     "patch": "cimi patch main",
     "minor": "cimi minor main",
-    "major": "cimi major main"
+    "major": "cimi major main",
+    "patch beta": "cimi patchBeta main",
+    "minor beta": "cimi minorBeta main",
+    "major beta": "cimi majorBeta main"
   },
   "bugs": {
     "url": "https://github.com/fengxinhhh/Cimi/issues"

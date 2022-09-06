@@ -10,6 +10,9 @@ program
   .option('patch', 'patch your new npm package')
   .option('minor', 'minor your new npm package')
   .option('major', 'major your new npm package')
+  .option('patchBeta', 'patch your new beta npm package')
+  .option('minorBeta', 'minor your new beta npm package')
+  .option('majorBeta', 'major your new beta npm package')
   .on('--help', () => {
     console.log('\n  Tip:\n')
     console.log(
@@ -19,6 +22,9 @@ program
     console.log(`    ${green('$')} cimi patch [branch] (default: master)`)
     console.log(`    ${green('$')} cimi minor [branch] (default: master)`)
     console.log(`    ${green('$')} cimi major [branch] (default: master)`)
+    console.log(`    ${green('$')} cimi patch--beta [branch] (default: master)`)
+    console.log(`    ${green('$')} cimi minor--beta [branch] (default: master)`)
+    console.log(`    ${green('$')} cimi major--beta [branch] (default: master)`)
     console.log('')
   })
   .parse(process.argv)

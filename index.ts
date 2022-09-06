@@ -7,7 +7,10 @@ const path = require('path')
 module.exports = async function(options) {
   //获取新的版本号
   function getNewVersion(oldVersion) {
-    const [major, minor, patch] = oldVersion.split('.')
+    let [major, minor, patch] = oldVersion.split('.')
+    if(patch.length > 2 && patch.includes('-beta')) {
+      patch = patch.split('-')[0];
+    }
     switch (type) {
       case 'patch':
         return `${major}.${minor}.${+patch + 1}`
@@ -15,6 +18,12 @@ module.exports = async function(options) {
         return `${major}.${+minor + 1}.${patch}`
       case 'major':
         return `${+major + 1}.${minor}.${patch}`
+      case 'patchBeta':
+        return `${major}.${minor}.${+patch + 1}-beta`
+      case 'minorBeta':
+        return `${major}.${+minor + 1}.${patch}-beta`
+      case 'majorBeta':
+        return `${+major + 1}.${minor}.${patch}-beta`
       default:
         console.error(
           red('\nPlease write correctly update type: patch、minor、major')
