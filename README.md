@@ -29,11 +29,14 @@ Cimi自动生成新版本号，自动生成commit message，创建tag，push到g
 
 ## Cimi修改版本规则
 
-`Cimi`共有三种规则，来进行发包，其实也就是确定版本号。
+`Cimi`共有六种规则，来进行发包，其实也就是确定版本号。
 
 * `cimi patch` 更新一个小版本，如1.1.0 -> 1.1.1，如bug修复;
 * `cimi minor` 更新一个中版本，如1.1.0 -> 1.2.0，如新增功能;
 * `cimi major` 更新一个大版本，如1.1.0 -> 2.1.0，如重构架构;
+* `cimi patchBeta` 更新一个小的测试版本，如1.1.0 -> 1.1.1-beta，如bug修复;
+* `cimi minor` 更新一个中的测试版本，如1.1.0 -> 1.2.0-beta，如新增功能;
+* `cimi major` 更新一个大的测试版本版本，如1.1.0 -> 2.1.0-beta，如重构架构;
 
 而分支默认为`master`，如果主分支为其他分支，应这样使用:
 
@@ -59,6 +62,9 @@ Options:
   patch          patch your new npm package
   minor          minor your new npm package
   major          major your new npm package
+  patchBeta      patch your new beta npm package
+  minorBeta      minor your new beta npm package
+  majorBeta      major your new beta npm package
   -h, --help     display help for command
 
   Tip:
@@ -70,6 +76,9 @@ Options:
     $ cimi patch [branch] (default: master)
     $ cimi minor [branch] (default: master)
     $ cimi major [branch] (default: master)
+    $ cimi patchBeta [branch] (default: master)
+    $ cimi minorBeta [branch] (default: master)
+    $ cimi majorBeta [branch] (default: master)
 
 ```
 
