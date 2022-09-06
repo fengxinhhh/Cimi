@@ -1,7 +1,7 @@
 {
   "name": "cimi",
   "license": "MIT",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "A tool for fully automatic publishing of npm packages",
   "authors": {
     "name": "fengxin",
@@ -21,10 +21,11 @@
   },
   "homepage": "https://github.com/fengxinhhh/Cimi#readme",
   "main": "index.js",
-  "bin": "./bin/cli.js",
+  "bin": "./bin/cli.ts",
   "dependencies": {
     "chalk": "^2.4.1",
-    "commander": "^9.4.0"
+    "commander": "^9.4.0",
+    "typescript": "^4.8.2"
   },
   "devDependencies": {
     "eslint": "^8.23.0"

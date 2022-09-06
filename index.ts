@@ -1,8 +1,8 @@
+const { exec } = require('child_process')
+const { cyan, green, red } = require('chalk')
+const getVersion = require('./getVersion.ts')
 const fs = require('fs')
 const path = require('path')
-const { exec } = require('child_process')
-const { green, red, cyan } = require('chalk')
-const getVersion = require('./getVersion')
 
 module.exports = async function(options) {
   //获取新的版本号
@@ -64,7 +64,7 @@ module.exports = async function(options) {
             console.log(err)
             throw err
           } else {
-            resolve()
+            resolve('')
           }
         }
       )

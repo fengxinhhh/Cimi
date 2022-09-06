@@ -3,7 +3,7 @@
 const program = require('commander')
 const { version } = require('../package.json')
 const { green, red } = require('chalk')
-const cimi = require('../index')
+const cimi = require('../index.ts')
 
 program
   .version(version, '-v, --version')
