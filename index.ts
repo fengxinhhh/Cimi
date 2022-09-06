@@ -26,7 +26,7 @@ module.exports = async function(options) {
         return `${+major + 1}.${minor}.${patch}-beta`
       default:
         console.error(
-          red('\nPlease write correctly update type: patch、minor、major')
+          red('\nPlease write correctly update type: patch、minor、major、patchBeta、minorBeta、majorBeta\n')
         )
         process.exit(1)
     }
@@ -83,6 +83,7 @@ module.exports = async function(options) {
   }
 
   const [type, branch = 'master'] = options.args
+  console.log(type, branch, options.args)
   const { projectVersion, projectName } = await getVersion()
   console.log(green(`Start to ${type} version to ${projectName}...`))
   const newVersion = getNewVersion(projectVersion)
