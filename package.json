@@ -18,8 +18,8 @@
     "minor": "cimi minor main",
     "major": "cimi major main",
     "patchBeta": "cimi patchBeta main",
-    "minor beta": "cimi minorBeta main",
-    "major beta": "cimi majorBeta main"
+    "minorBeta": "cimi minorBeta main",
+    "majorBeta": "cimi majorBeta main"
   },
   "bugs": {
     "url": "https://github.com/fengxinhhh/Cimi/issues"
