@@ -82,7 +82,7 @@ module.exports = async function(options) {
       childExec.stderr.pipe(process.stderr)
     })
   }
-
+  console.log(options.args)
   const [type, branch = 'master'] = options.args
   const { projectVersion, projectName } = await getVersion()
   console.log(green(`Start to ${type} version to ${projectName}...`))
