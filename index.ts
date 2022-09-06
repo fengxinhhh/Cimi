@@ -83,3 +83,4 @@ module.exports = async function(options) {
   await execShell()
   console.log(`\n${green('[ Cimi ]')} Release ${projectName} Success!\n`)
 }
+
