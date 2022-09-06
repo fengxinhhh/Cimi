@@ -1,6 +1,6 @@
 const { exec } = require('child_process')
 const { cyan, green, red } = require('chalk')
-const getVersion = require('./getVersion.ts')
+const getVersion = require('./getVersion')
 const fs = require('fs')
 const path = require('path')
 
