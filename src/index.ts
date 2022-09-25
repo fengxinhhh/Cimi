@@ -1,10 +1,12 @@
-const { exec } = require('child_process')
-const { cyan, green, red } = require('chalk')
-const getVersion = require('./getVersion')
-const fs = require('fs')
-const path = require('path')
+import { exec } from 'child_process'
+import chalk from 'chalk'
+import getVersion from './getVersion'
+import fs from 'fs'
+import path from 'path'
 
-module.exports = async function(options) {
+const { cyan, green, red } = chalk
+
+export default async function(options) {
   //获取新的版本号
   function getNewVersion(oldVersion) {
     let [major, minor, patch] = oldVersion.split('.')

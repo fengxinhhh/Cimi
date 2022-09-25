@@ -13,6 +13,7 @@
     "dist"
   ],
   "scripts": {
+    "build":"tsup",
     "patch": "cimi patch main",
     "minor": "cimi minor main",
     "major": "cimi major main",
@@ -37,5 +38,16 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
+  },
+  "tsup": {
+    "entry": [
+      "src/*.ts",
+      "src/bin/*.ts"
+    ],
+    "minify": true,
+    "splitting": false,
+    "clean": true,
+    "dts": true,
+    "skipNodeModulesBundle": true
   }
 }

@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
-const program = require('commander')
-const { version } = require('../package.json')
-const { green, red } = require('chalk')
-const cimi = require('../lib/index')
+import { program } from 'commander'
+import { version } from '../../package.json'
+import chalk from 'chalk'
+import cimi from '../index'
+
+const { green, red } = chalk
 
 program
   .version(version, '-v, --version')

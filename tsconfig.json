@@ -10,6 +10,7 @@
     "esModuleInterop": true,
     "alwaysStrict": true,
     "stripInternal": true,
+    "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "noFallthroughCasesInSwitch": true,
