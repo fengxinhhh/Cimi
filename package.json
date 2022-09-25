@@ -10,8 +10,7 @@
   "files": [
     ".github",
     "README.md",
-    "lib",
-    "bin"
+    "dist"
   ],
   "scripts": {
     "patch": "cimi patch main",
@@ -25,8 +24,8 @@
     "url": "https://github.com/fengxinhhh/Cimi/issues"
   },
   "homepage": "https://github.com/fengxinhhh/Cimi#readme",
-  "main": "index.js",
-  "bin": "./bin/cli.ts",
+  "main": "dist/index",
+  "bin": "./dist/bin/cli",
   "dependencies": {
     "chalk": "^2.4.1",
     "commander": "^9.4.0"
