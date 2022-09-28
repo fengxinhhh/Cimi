@@ -3,15 +3,19 @@ const { readFileSync, writeFileSync } = require('fs')
 const { resolve } = require('path')
 const { green, red, cyan } = require('chalk')
 const getVersion = require('./getVersion.ts')
+const  inquirer = require("inquirer");
 
 module.exports = async function(options) {
   const type = options.rawArgs[2];
   const branch = options.rawArgs[3] || 'master';
-  console.log(options)
   console.info(type, branch)
   const { projectVersion, projectName } = await getVersion()
-  console.info(green(`Start to ${type} version to ${projectName}...`))
-  const newVersion = getNewVersion(projectVersion)
+  if(type){
+    console.info(green(`Start to ${type} version to ${projectName}...`))
+  }else{
+    console.info(green(`Start to manual select new version to ${projectName}...`))
+  }
+  const newVersion = await getNewVersion(projectVersion)
   writeNewVersion()
   console.info(green(`\nVersion: ${cyan(`${projectVersion} -> ${newVersion}`)}`))
   console.info(green(`${type} ${projectName} version to ${newVersion}`))
@@ -37,6 +41,35 @@ module.exports = async function(options) {
         return `${major}.${+minor + 1}.${patch}-beta`
       case 'majorBeta':
         return `${+major + 1}.${minor}.${patch}-beta`
+      case 'manual' : {
+          return inquirer
+            .prompt([
+              {
+                type: "list",
+                name: "cimiType",
+                message: "please select new version",
+                choices: [
+                  `patch ${major}.${minor}.${+patch + 1}`,
+                  `patch-beta ${major}.${minor}.${+patch + 1}-beta`,
+                  `minor ${major}.${+minor + 1}.${patch}`,
+                  `minor-beta ${major}.${+minor + 1}.${patch}-beta`,
+                  `major ${+major + 1}.${minor}.${patch}`,
+                  `major-beta ${+major + 1}.${minor}.${patch}-beta`,
+                ],
+              },
+            ])
+            .then((answers) => {
+              return answers["cimiType"];
+            })
+            .catch((error) => {
+              if (error.isTtyError) {
+                // Prompt couldn't be rendered in the current environment
+                console.log(red(`Prompt couldn't be rendered in the current environment`));
+              } else {
+                console.log(red(`error:${error}`));
+              }
+            });
+        }
       default:
         console.error(
           red('\nPlease write correctly update type: patch、minor、major、patchBeta、minorBeta、majorBeta\n')
@@ -83,7 +116,7 @@ module.exports = async function(options) {
   }
 
   async function step(desc, command) {
-    console.log(desc)
+    // console.log(desc)
     return new Promise((resolve, reject) => {
       const childExec = exec(
         command.join(' && '),
