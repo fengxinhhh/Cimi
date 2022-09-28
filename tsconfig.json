@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "lib",
+    "outDir": "dist",
     "module": "commonjs",
     "target": "es5",
     "lib": ["es5", "es6", "es7"],
@@ -10,6 +10,7 @@
     "esModuleInterop": true,
     "alwaysStrict": true,
     "stripInternal": true,
+    "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "noFallthroughCasesInSwitch": true,
@@ -17,10 +18,10 @@
     "declaration": true
   },
   "include": [
-    "./"
+    "./src"
   ],
   "exclude": [
     "node_modules",
-    "lib"
+    "dist"
   ]
 }
