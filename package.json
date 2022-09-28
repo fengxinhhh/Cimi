@@ -13,7 +13,7 @@
     "dist"
   ],
   "scripts": {
-    "build":"tsup",
+    "build": "tsup",
     "patch": "cimi patch main",
     "minor": "cimi minor main",
     "major": "cimi major main",
@@ -29,7 +29,8 @@
   "bin": "./dist/bin/cli",
   "dependencies": {
     "chalk": "^2.4.1",
-    "commander": "^9.4.0"
+    "commander": "^9.4.0",
+    "tsup": "^6.2.3"
   },
   "devDependencies": {
     "@types/node": "^18.7.20",
