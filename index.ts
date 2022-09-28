@@ -8,6 +8,7 @@ const  inquirer = require("inquirer");
 module.exports = async function(options) {
   const type = options.rawArgs[2];
   const branch = options.rawArgs[3] || 'master';
+  console.log(options)
   console.info(type, branch)
   const { projectVersion, projectName } = await getVersion()
   if(type){
