@@ -60,6 +60,7 @@ module.exports = async function(options) {
               },
             ])
             .then((answers) => {
+              console.log(63,answers)
               return answers["cimiType"];
             })
             .catch((error) => {
