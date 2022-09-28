@@ -7,6 +7,7 @@ const getVersion = require('./getVersion.ts')
 module.exports = async function(options) {
   const type = getCimiType();
   const branch = options.args[0] || 'master';
+  console.log(options.args)
   console.info(type, branch)
   const { projectVersion, projectName } = await getVersion()
   console.info(green(`Start to ${type} version to ${projectName}...`))
