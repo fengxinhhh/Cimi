@@ -5,8 +5,8 @@ const { green, red, cyan } = require('chalk')
 const getVersion = require('./getVersion.ts')
 
 module.exports = async function(options) {
-  const type = getCimiType();
-  const branch = options.args[0] || 'master';
+  const type = options.rawArgs[2];
+  const branch = options.rawArgs[3] || 'master';
   console.log(options)
   console.info(type, branch)
   const { projectVersion, projectName } = await getVersion()
@@ -17,18 +17,7 @@ module.exports = async function(options) {
   console.info(green(`${type} ${projectName} version to ${newVersion}`))
   await execShell()
   console.info(`\n${green('[ Cimi ]')} Release ${projectName} Success!\n`)
-  //获取cimi type
-  function getCimiType() {
-    switch(options) {
-      case options.patch: return 'patch';
-      case options.minor: return 'minor';
-      case options.major: return 'major';
-      case options.patchBeta: return 'patchBeta';
-      case options.minorBeta: return 'minorBeta';
-      case options.majorBeta: return 'majorBeta';
-      default: return 'patch'
-    }
-  }
+
   //获取新的版本号
   function getNewVersion(oldVersion) {
     let [major, minor, patch] = oldVersion.split('.')
