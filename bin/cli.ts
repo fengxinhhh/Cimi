@@ -2,7 +2,7 @@
 
 const program = require('commander')
 const pkg = require('../package.json')
-const { green, red }  = require('chalk')
+const { green, red, cyan }  = require('chalk')
 const cimi = require('../index.ts')
 
 program
