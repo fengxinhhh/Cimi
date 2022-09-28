@@ -1,14 +1,13 @@
-import { exec } from 'child_process'
-import { readFileSync, writeFileSync } from 'fs'
-import { resolve } from 'path'
-import chalk from 'chalk'
-import getVersion from './getVersion'
+const { exec } = require('child_process')
+const { readFileSync, writeFileSync } = require('fs')
+const { resolve } = require('path')
+const { green, red, cyan } = require('chalk')
+const getVersion = require('./getVersion.ts')
 
-const { cyan, green, red } = chalk
-
-export default async function(options:any) {
-  const [type, branch = 'master'] = options.args
-  console.info(type, branch, options.args)
+module.exports = async function(options) {
+  const type = getCimiType();
+  const branch = options.args[0] || 'master';
+  console.info(type, branch)
   const { projectVersion, projectName } = await getVersion()
   console.info(green(`Start to ${type} version to ${projectName}...`))
   const newVersion = getNewVersion(projectVersion)
@@ -17,9 +16,20 @@ export default async function(options:any) {
   console.info(green(`${type} ${projectName} version to ${newVersion}`))
   await execShell()
   console.info(`\n${green('[ Cimi ]')} Release ${projectName} Success!\n`)
-
+  //获取cimi type
+  function getCimiType() {
+    switch(options) {
+      case options.patch: return 'patch';
+      case options.minor: return 'minor';
+      case options.major: return 'major';
+      case options.patchBeta: return 'patchBeta';
+      case options.minorBeta: return 'minorBeta';
+      case options.majorBeta: return 'majorBeta';
+      default: return 'patch'
+    }
+  }
   //获取新的版本号
-  function getNewVersion(oldVersion:string) {
+  function getNewVersion(oldVersion) {
     let [major, minor, patch] = oldVersion.split('.')
     if(patch.length > 2 && patch.includes('-beta')) {
       patch = patch.split('-')[0];
@@ -82,7 +92,7 @@ export default async function(options:any) {
     await step(echo3, part3)
   }
 
-  async function step(desc: string, command: string[]) {
+  async function step(desc, command) {
     console.log(desc)
     return new Promise((resolve, reject) => {
       const childExec = exec(

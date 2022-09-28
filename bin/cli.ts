@@ -1,14 +1,12 @@
 #!/usr/bin/env node
 
-import { program } from 'commander'
-import { version } from '../../package.json'
-import chalk from 'chalk'
-import cimi from '../index'
-
-const { green, red } = chalk
+const program = require('commander')
+const pkg = require('../package.json')
+const { green, red }  = require('chalk')
+const cimi = require('../index.ts')
 
 program
-  .version(version, '-v, --version')
+  .version(pkg.version, '-v, --version')
   .option('patch', 'patch your new npm package')
   .option('minor', 'minor your new npm package')
   .option('major', 'major your new npm package')

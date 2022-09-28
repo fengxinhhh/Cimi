@@ -1,7 +1,7 @@
-import fs from 'fs'
-import path from 'path'
+const fs = require('fs')
+const path = require('path')
 
-export default async function() {
+module.exports = async function() {
   const packageJson = fs.readFileSync(
     path.resolve(process.cwd(), 'package.json'),
     'utf8'

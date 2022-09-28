@@ -19,7 +19,7 @@
   },
   "include": [
     "./src"
-  ],
+, "bin"  ],
   "exclude": [
     "node_modules",
     "dist"
