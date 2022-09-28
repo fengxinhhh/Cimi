@@ -50,17 +50,16 @@ module.exports = async function(options) {
                 name: "cimiType",
                 message: "please select new version",
                 choices: [
-                  `patch ${major}.${minor}.${+patch + 1}`,
-                  `patch-beta ${major}.${minor}.${+patch + 1}-beta`,
-                  `minor ${major}.${+minor + 1}.${patch}`,
-                  `minor-beta ${major}.${+minor + 1}.${patch}-beta`,
-                  `major ${+major + 1}.${minor}.${patch}`,
-                  `major-beta ${+major + 1}.${minor}.${patch}-beta`,
+                  `${major}.${minor}.${+patch + 1}`,
+                  `${major}.${minor}.${+patch + 1}-beta`,
+                  `${major}.${+minor + 1}.${patch}`,
+                  `${major}.${+minor + 1}.${patch}-beta`,
+                  `${+major + 1}.${minor}.${patch}`,
+                  `${+major + 1}.${minor}.${patch}-beta`,
                 ],
               },
             ])
             .then((answers) => {
-              console.log(63,answers)
               return answers["cimiType"];
             })
             .catch((error) => {
