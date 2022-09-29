@@ -8,7 +8,7 @@ const  inquirer = require("inquirer");
 module.exports = async function(options) {
   const type = options.rawArgs[2];
   const branch = options.rawArgs[3] || 'master';
-  console.log(options)
+  // console.log(options)
   console.info(type, branch)
   const { projectVersion, projectName } = await getVersion()
   if(type){
@@ -50,17 +50,21 @@ module.exports = async function(options) {
                 name: "cimiType",
                 message: "please select new version",
                 choices: [
-                  `${major}.${minor}.${+patch + 1}`,
-                  `${major}.${minor}.${+patch + 1}-beta`,
-                  `${major}.${+minor + 1}.${patch}`,
-                  `${major}.${+minor + 1}.${patch}-beta`,
-                  `${+major + 1}.${minor}.${patch}`,
-                  `${+major + 1}.${minor}.${patch}-beta`,
+                  `patch ${major}.${minor}.${+patch + 1}`,
+                  `patch-beta ${major}.${minor}.${+patch + 1}-beta`,
+                  `major ${major}.${+minor + 1}.${patch}`,
+                  `major-beta ${major}.${+minor + 1}.${patch}-beta`,
+                  `major ${+major + 1}.${minor}.${patch}`,
+                  `major-beta ${+major + 1}.${minor}.${patch}-beta`,
                 ],
               },
             ])
             .then((answers) => {
-              return answers["cimiType"];
+              try{
+                return answers["cimiType"].match(/(?<=\w+\s+)(\w|\.|\-)+/)[0];
+              }catch(err){
+                return answers["cimiType"]
+              }
             })
             .catch((error) => {
               if (error.isTtyError) {
