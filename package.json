@@ -1,7 +1,7 @@
 {
   "name": "cimi",
   "license": "MIT",
-  "version": "1.1.34",
+  "version": "1.1.38",
   "description": "A tool for fully automatic publishing of npm packages",
   "authors": {
     "name": "fengxin",
@@ -10,7 +10,10 @@
   "files": [
     ".github",
     "README.md",
-    "dist"
+    "dist",
+    "bin",
+    "index.ts",
+    "getVersion.ts"
   ],
   "scripts": {
     "build": "tsup",
