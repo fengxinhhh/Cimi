@@ -17,11 +17,11 @@ module.exports = async function(options) {
     console.info(green(`Start to manual select new version to ${projectName}...`))
   }
   const newVersion = await getNewVersion(projectVersion)
-  // writeNewVersion()
+  writeNewVersion()
   console.info(green(`\nVersion: ${cyan(`${projectVersion} -> ${newVersion}`)}`))
-  // console.info(green(`${type} ${projectName} version to ${newVersion}`))
-  // await execShell()
-  // console.info(`\n${green('[ Cimi ]')} Release ${projectName} Success!\n`)
+  console.info(green(`${type} ${projectName} version to ${newVersion}`))
+  await execShell()
+  console.info(`\n${green('[ Cimi ]')} Release ${projectName} Success!\n`)
 
   //获取新的版本号
   function getNewVersion(oldVersion) {
