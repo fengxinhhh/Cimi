@@ -23,7 +23,7 @@ Cimi自动生成新版本号，自动生成commit message，创建tag，push到g
 
 听起来是不是很麻烦？而有了`cimi`，你只需要一行简单的代码:
 
-`cimi patch master`
+`cimi patch main`
 
 就可以完成上面所有事情。
 
