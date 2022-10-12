@@ -8,7 +8,7 @@ const cimi = require('../index.ts');
 program
   .name('cimi')
   .description(
-    'A fully automatic NPM package tool, one line command to help you "git replase, create git tag, release NPM package"',
+    'A fully automatic NPM package tool, one line command to help you "git replase, create git tag, release NPM package"'
   )
   .version(pkg.version, '-v, --version')
   .option('manual', 'manual select your new package version')
@@ -21,7 +21,7 @@ program
   .on('--help', () => {
     console.log('\n  Tip:\n');
     console.log(
-      '    You should run this script in the root directory of you project or run by npm scripts.',
+      '    You should run this script in the root directory of you project or run by npm scripts.'
     );
     console.log('\n  Examples:\n');
     console.log(`    ${green('$')} cimi manual [branch] (default: master)`);

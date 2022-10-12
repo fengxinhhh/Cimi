@@ -14,15 +14,11 @@ module.exports = async function (options) {
   if (type) {
     console.info(green(`Start to ${type} version to ${projectName}...`));
   } else {
-    console.info(
-      green(`Start to manual select new version to ${projectName}...`),
-    );
+    console.info(green(`Start to manual select new version to ${projectName}...`));
   }
   const newVersion = await getNewVersion(projectVersion);
   writeNewVersion();
-  console.info(
-    green(`\nVersion: ${cyan(`${projectVersion} -> ${newVersion}`)}`),
-  );
+  console.info(green(`\nVersion: ${cyan(`${projectVersion} -> ${newVersion}`)}`));
   console.info(green(`${type} ${projectName} version to ${newVersion}`));
   await execShell();
   console.info(`\n${green('[ Cimi ]')} Release ${projectName} Success!\n`);
@@ -73,9 +69,7 @@ module.exports = async function (options) {
           .catch(error => {
             if (error.isTtyError) {
               // Prompt couldn't be rendered in the current environment
-              console.log(
-                red(`Prompt couldn't be rendered in the current environment`),
-              );
+              console.log(red(`Prompt couldn't be rendered in the current environment`));
             } else {
               console.log(red(`error:${error}`));
             }
@@ -84,43 +78,34 @@ module.exports = async function (options) {
       default:
         console.error(
           red(
-            '\nPlease write correctly update type: patch、minor、major、patchBeta、minorBeta、majorBeta\n',
-          ),
+            '\nPlease write correctly update type: patch、minor、major、patchBeta、minorBeta、majorBeta\n'
+          )
         );
         process.exit(1);
     }
   }
   //写入新版本号，更新项目文件
   function writeNewVersion() {
-    const packageJson = readFileSync(
-      resolve(process.cwd(), 'package.json'),
-      'utf8',
-    );
+    const packageJson = readFileSync(resolve(process.cwd(), 'package.json'), 'utf8');
     const newPackageJson = packageJson.replace(
       `"version": "${projectVersion}"`,
-      `"version": "${newVersion}"`,
+      `"version": "${newVersion}"`
     );
     writeFileSync(resolve(process.cwd(), 'package.json'), newPackageJson);
     console.info(green('\nUpdate package.json success!'));
   }
   //执行整个流程的命令
   async function execShell() {
-    const echo1 = `${green('[ 1 / 3 ]')} ${cyan(
-      `Commit and push to ${branch} branch`,
-    )}`;
+    const echo1 = `${green('[ 1 / 3 ]')} ${cyan(`Commit and push to ${branch} branch`)}`;
     const part1 = [
       'git add .',
       `git commit -m "${type} version to ${newVersion}"`,
       `git push origin ${branch}`,
     ];
-    const echo2 = `${green('[ 2 / 3 ]')} ${cyan(
-      `Tag and push tag to ${branch}`,
-    )}`;
+    const echo2 = `${green('[ 2 / 3 ]')} ${cyan(`Tag and push tag to ${branch}`)}`;
     const part2 = [`git tag ${newVersion}`, `git push origin ${newVersion}`];
     const echo3 = `${green('[ 3 / 3 ]')} ${cyan('Publish to NPM')}`;
-    const part3 = [
-      `npm publish ${options.accessPublic ? '--access=public' : ''}`,
-    ];
+    const part3 = [`npm publish ${options.accessPublic ? '--access=public' : ''}`];
     await step(echo1, part1);
     await step(echo2, part2);
     await step(echo3, part3);
@@ -140,7 +125,7 @@ module.exports = async function (options) {
           } else {
             resolve('');
           }
-        },
+        }
       );
       childExec.stdout?.pipe(process.stdout);
       childExec.stderr?.pipe(process.stderr);
