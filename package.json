@@ -57,7 +57,7 @@
 		"minify": true,
 		"splitting": false,
 		"clean": true,
-		"dts": true,
+		"dts": false,
 		"skipNodeModulesBundle": true
 	}
 }
