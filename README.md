@@ -29,7 +29,7 @@ Cimi 自动生成新版本号，自动生成 commit message，创建 tag，push 
 
 ## Cimi 修改版本规则
 
-`Cimi`共有六种规则，来进行发包，其实也就是确定版本号。
+`Cimi`共有五种规则，来进行发包，其实也就是确定版本号。
 
 * `cimi patch` 更新一个小版本，如1.1.0 -> 1.1.1，如bug修复;
 * `cimi minor` 更新一个中版本，如1.1.0 -> 1.2.0，如新增功能;
@@ -94,8 +94,6 @@ Options:
     $ cimi upgradeBeta [branch] (default: master)
 
 ```
-
-![image](https://user-images.githubusercontent.com/32048580/192793164-398ffe40-1ed9-4a66-b3bb-a7fe0a8152a1.png)
 
 ## LICENSE
 
