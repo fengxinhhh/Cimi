@@ -1,7 +1,7 @@
 {
   "name": "cimi",
   "license": "MIT",
-  "version": "1.1.41",
+  "version": "1.1.42",
   "description": "A tool for fully automatic publishing of npm packages",
   "authors": {
     "name": "fengxin",
@@ -20,9 +20,8 @@
     "patch": "cimi patch main",
     "minor": "cimi minor main",
     "major": "cimi major main",
-    "patchBeta": "cimi patchBeta main",
-    "minorBeta": "cimi minorBeta main",
-    "majorBeta": "cimi majorBeta main",
+    "beta": "cimi beta main",
+    "upgrade": "cimi upgrade main",
     "prepare": "husky install",
     "prettier": "prettier -w *  --ignore-unknown"
   },
