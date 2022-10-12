@@ -1,0 +1,32 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.2
+        with:
+          # Version of pnpm to install
+          version: '7.x'
+
+      # Runs a set of commands using the runners shell
+      - name: install deps
+        run: pnpm install
+        
+      - name: build
+        run: pnpm build
+        
+
