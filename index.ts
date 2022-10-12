@@ -26,7 +26,7 @@ module.exports = async function(options) {
   //获取新的版本号
   function getNewVersion(oldVersion) {
     let [major, minor, patch] = oldVersion.split('.')
-    const betaVersion = oldVersion?.split('beta')[1];
+    const betaVersion = oldVersion?.split('beta')[1] || 1;
     if(patch.length > 2 && patch.includes('-beta')) {
       patch = patch.split('-')[0];
     }
