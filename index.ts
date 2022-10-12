@@ -9,7 +9,7 @@ module.exports = async function(options) {
   const type = options.rawArgs[2];
   const branch = options.rawArgs[3] || 'master';
   // console.log(options)
-  console.info(type, branch)
+  console.info(`Cimi type: ${green(type)}, Cimi push branch: ${green(branch)}`)
   const { projectVersion, projectName } = await getVersion()
   if(type){
     console.info(green(`Start to ${type} version to ${projectName}...`))
@@ -56,10 +56,10 @@ module.exports = async function(options) {
                 message: "please select new version",
                 choices: [
                   `patch ${major}.${minor}.${+patch + 1}`,
-                  `patch-beta ${major}.${minor}.${+patch + 1}-beta`,
-                  `major ${major}.${+minor + 1}.${patch}`,
+                  // `patch-beta ${major}.${minor}.${+patch + 1}-beta`,
+                  `minor ${major}.${+minor + 1}.${patch}`,
                   // `major-beta ${major}.${+minor + 1}.${patch}-beta`,
-                  // `major ${+major + 1}.${minor}.${patch}`,
+                  `major ${+major + 1}.${minor}.${patch}`,
                   // `major-beta ${+major + 1}.${minor}.${patch}-beta`,
                   `${major}.${minor}.${patch}-beta`,
                   `${major}.${minor}.${patch}-beta${+betaVersion + 1}`

@@ -34,21 +34,23 @@ Cimi自动生成新版本号，自动生成commit message，创建tag，push到g
 * `cimi patch` 更新一个小版本，如1.1.0 -> 1.1.1，如bug修复;
 * `cimi minor` 更新一个中版本，如1.1.0 -> 1.2.0，如新增功能;
 * `cimi major` 更新一个大版本，如1.1.0 -> 2.1.0，如重构架构;
-* `cimi patchBeta` 更新一个小的测试版本，如1.1.0 -> 1.1.1-beta，如bug修复;
+* `cimi beta` 将当前版本转为beta版本，如1.1.0 -> 1.1.0-beta，如生产前测试;
+* `cimi upgradeBeta` 将当前beta版本升级一次beta号，如1.1.0-beta -> 1.1.0-beta2，如二次测试;
+<!-- * `cimi patchBeta` 更新一个小的测试版本，如1.1.0 -> 1.1.1-beta，如bug修复;
 * `cimi minor` 更新一个中的测试版本，如1.1.0 -> 1.2.0-beta，如新增功能;
-* `cimi major` 更新一个大的测试版本版本，如1.1.0 -> 2.1.0-beta，如重构架构;
+* `cimi major` 更新一个大的测试版本版本，如1.1.0 -> 2.1.0-beta，如重构架构; -->
 
 而分支默认为`master`，如果主分支为其他分支，应这样使用:
 
 `cimi patch main`
 
-`cimi patch beta`
+`cimi patch dev`
 
 当然，也可以通过`cimi manual`来触发对话模式，允许你手动输入更改版本。
 
 类似这样的：
 
-![manual select](https://user-images.githubusercontent.com/32048580/192793164-398ffe40-1ed9-4a66-b3bb-a7fe0a8152a1.png)
+![manual select](./.github/manual-demo.jpg)
 
 该场景适用于频繁更改`patch`或`patch-beta`版本号时，当然，更开放的交互更将让你有掌控感，不是吗？[偷笑]~
 
@@ -74,9 +76,8 @@ Options:
   patch          patch your new npm package
   minor          minor your new npm package
   major          major your new npm package
-  patchBeta      patch your new beta npm package
-  minorBeta      minor your new beta npm package
-  majorBeta      major your new beta npm package
+  beta           beta your new npm package
+  upgradeBeta    upgrade your npm package new version
   -h, --help     display help for command
 
   Tip:
@@ -89,9 +90,8 @@ Options:
     $ cimi patch [branch] (default: master)
     $ cimi minor [branch] (default: master)
     $ cimi major [branch] (default: master)
-    $ cimi patchBeta [branch] (default: master)
-    $ cimi minorBeta [branch] (default: master)
-    $ cimi majorBeta [branch] (default: master)
+    $ cimi beta [branch] (default: master)
+    $ cimi upgradeBeta [branch] (default: master)
 
 ```
 
