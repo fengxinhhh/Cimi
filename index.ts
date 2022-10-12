@@ -11,9 +11,9 @@ module.exports = async function (options) {
   // console.log(options)
   console.info(`Cimi type: ${green(type)}, Cimi push branch: ${green(branch)}`)
   const { projectVersion, projectName } = await getVersion()
-  if(type){
+  if (type) {
     console.info(green(`Start to ${type} version to ${projectName}...`))
-  }else{
+  } else {
     console.info(green(`Start to manual select new version to ${projectName}...`))
   }
   const newVersion = await getNewVersion(projectVersion);
@@ -27,7 +27,7 @@ module.exports = async function (options) {
   function getNewVersion(oldVersion) {
     let [major, minor, patch] = oldVersion.split('.')
     const betaVersion = oldVersion?.split('beta')[1] || 1;
-    if(patch.length > 2 && patch.includes('-beta')) {
+    if (patch.length > 2 && patch.includes('-beta')) {
       patch = patch.split('-')[0];
     }
     switch (type) {
@@ -37,7 +37,7 @@ module.exports = async function (options) {
         return `${major}.${+minor + 1}.${patch}`;
       case 'major':
         return `${+major + 1}.${minor}.${patch}`
-      case 'beta': 
+      case 'beta':
         return `${major}.${minor}.${patch}-beta`
       case 'upgradeBeta':
         return `${major}.${minor}.${patch}-beta${+betaVersion + 1}`
@@ -47,41 +47,41 @@ module.exports = async function (options) {
       //   return `${major}.${+minor + 1}.${patch}-beta`
       // case 'majorBeta':
       //   return `${+major + 1}.${minor}.${patch}-beta`
-      case 'manual' : {
-          return inquirer
-            .prompt([
-              {
-                type: "list",
-                name: "cimiType",
-                message: "please select new version",
-                choices: [
-                  `patch ${major}.${minor}.${+patch + 1}`,
-                  // `patch-beta ${major}.${minor}.${+patch + 1}-beta`,
-                  `minor ${major}.${+minor + 1}.${patch}`,
-                  // `major-beta ${major}.${+minor + 1}.${patch}-beta`,
-                  `major ${+major + 1}.${minor}.${patch}`,
-                  // `major-beta ${+major + 1}.${minor}.${patch}-beta`,
-                  `${major}.${minor}.${patch}-beta`,
-                  `${major}.${minor}.${patch}-beta${+betaVersion + 1}`
-                ],
-              },
-            ])
-            .then((answers) => {
-              try{
-                return answers["cimiType"].match(/(?<=\w+\s+)(\w|\.|\-)+/)[0];
-              }catch(err){
-                return answers["cimiType"]
-              }
-            })
-            .catch((error) => {
-              if (error.isTtyError) {
-                // Prompt couldn't be rendered in the current environment
-                console.log(red(`Prompt couldn't be rendered in the current environment`));
-              } else {
-                console.log(red(`error:${error}`));
-              }
-            });
-        }
+      case 'manual': {
+        return inquirer
+          .prompt([
+            {
+              type: "list",
+              name: "cimiType",
+              message: "please select new version",
+              choices: [
+                `patch ${major}.${minor}.${+patch + 1}`,
+                // `patch-beta ${major}.${minor}.${+patch + 1}-beta`,
+                `minor ${major}.${+minor + 1}.${patch}`,
+                // `major-beta ${major}.${+minor + 1}.${patch}-beta`,
+                `major ${+major + 1}.${minor}.${patch}`,
+                // `major-beta ${+major + 1}.${minor}.${patch}-beta`,
+                `${major}.${minor}.${patch}-beta`,
+                `${major}.${minor}.${patch}-beta${+betaVersion + 1}`
+              ],
+            },
+          ])
+          .then((answers) => {
+            try {
+              return answers["cimiType"].match(/(?<=\w+\s+)(\w|\.|\-)+/)[0];
+            } catch (err) {
+              return answers["cimiType"]
+            }
+          })
+          .catch((error) => {
+            if (error.isTtyError) {
+              // Prompt couldn't be rendered in the current environment
+              console.log(red(`Prompt couldn't be rendered in the current environment`));
+            } else {
+              console.log(red(`error:${error}`));
+            }
+          });
+      }
       default:
         console.error(
           red(
