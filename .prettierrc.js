@@ -1,3 +1,4 @@
 module.exports = {
-	...require('base-prettier-config'),
+  ...require('base-prettier-config'),
+  useTabs: false,
 };

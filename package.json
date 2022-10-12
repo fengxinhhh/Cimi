@@ -1,63 +1,64 @@
 {
-	"name": "cimi",
-	"license": "MIT",
-	"version": "1.1.42-beta",
-	"description": "A tool for fully automatic publishing of npm packages",
-	"authors": {
-		"name": "fengxin",
-		"email": "1244200081@qq.com"
-	},
-	"files": [
-		".github",
-		"README.md",
-		"dist",
-		"bin",
-		"index.ts",
-		"getVersion.ts"
-	],
-	"scripts": {
-		"build": "tsup",
-		"patch": "cimi patch main",
-		"minor": "cimi minor main",
-		"major": "cimi major main",
-		"patchBeta": "cimi patchBeta main",
-		"minorBeta": "cimi minorBeta main",
-		"majorBeta": "cimi majorBeta main",
-		"prepare": "husky install"
-	},
-	"bugs": {
-		"url": "https://github.com/fengxinhhh/Cimi/issues"
-	},
-	"homepage": "https://github.com/fengxinhhh/Cimi#readme",
-	"main": "dist/index",
-	"bin": "./bin/cli.ts",
-	"dependencies": {
-		"chalk": "^2.4.1",
-		"commander": "^9.4.0",
-		"inquirer": "^8.2.4",
-		"tsup": "^6.2.3"
-	},
-	"devDependencies": {
-		"@types/node": "^18.7.20",
-		"base-prettier-config": "^1.0.2",
-		"eslint": "^8.23.0",
-		"husky": "^8.0.1",
-		"lint-staged": "^13.0.3",
-		"prettier": "^2.7.1",
-		"typescript": "^4.8.2"
-	},
-	"publishConfig": {
-		"registry": "https://registry.npmjs.org/"
-	},
-	"tsup": {
-		"entry": [
-			"*.ts",
-			"bin/*.ts"
-		],
-		"minify": true,
-		"splitting": false,
-		"clean": true,
-		"dts": false,
-		"skipNodeModulesBundle": true
-	}
+  "name": "cimi",
+  "license": "MIT",
+  "version": "1.1.42-beta",
+  "description": "A tool for fully automatic publishing of npm packages",
+  "authors": {
+    "name": "fengxin",
+    "email": "1244200081@qq.com"
+  },
+  "files": [
+    ".github",
+    "README.md",
+    "dist",
+    "bin",
+    "index.ts",
+    "getVersion.ts"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "patch": "cimi patch main",
+    "minor": "cimi minor main",
+    "major": "cimi major main",
+    "patchBeta": "cimi patchBeta main",
+    "minorBeta": "cimi minorBeta main",
+    "majorBeta": "cimi majorBeta main",
+    "prepare": "husky install",
+    "prettier": "prettier -w **/*  --ignore-unknown"
+  },
+  "bugs": {
+    "url": "https://github.com/fengxinhhh/Cimi/issues"
+  },
+  "homepage": "https://github.com/fengxinhhh/Cimi#readme",
+  "main": "dist/index",
+  "bin": "./bin/cli.ts",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "commander": "^9.4.0",
+    "inquirer": "^8.2.4",
+    "tsup": "^6.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.20",
+    "base-prettier-config": "^1.0.2",
+    "eslint": "^8.23.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.2"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "tsup": {
+    "entry": [
+      "*.ts",
+      "bin/*.ts"
+    ],
+    "minify": true,
+    "splitting": false,
+    "clean": true,
+    "dts": false,
+    "skipNodeModulesBundle": true
+  }
 }
