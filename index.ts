@@ -4,7 +4,7 @@ const { resolve } = require('path');
 const { green, red, cyan } = require('chalk');
 const getVersion = require('./getVersion.ts');
 const inquirer = require('inquirer');
-
+export {};
 module.exports = async function (options) {
 	const type = options.rawArgs[2];
 	const branch = options.rawArgs[3] || 'master';
