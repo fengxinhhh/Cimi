@@ -17,11 +17,6 @@
     "forceConsistentCasingInFileNames": true,
     "declaration": true
   },
-  "include": [
-    "./"
-, "bin"  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "include": ["./", "bin"],
+  "exclude": ["node_modules", "dist"]
 }

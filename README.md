@@ -3,23 +3,23 @@
 
 # Cimi
 
-一款全自动npm发包工具，一行命令帮助你git replase、创建git tag、发布npm包。
+一款全自动 npm 发包工具，一行命令帮助你 git replase、创建 git tag、发布 npm 包。
 
-Cimi自动生成新版本号，自动生成commit message，创建tag，push到github，最后发布到npm中，整个过程只需要一行命令，解放你的双手！
+Cimi 自动生成新版本号，自动生成 commit message，创建 tag，push 到 github，最后发布到 npm 中，整个过程只需要一行命令，解放你的双手！
 
 ## 使用示例
 
 ![Screenshot](./.github/demo.jpg)
 
-## Cimi有什么优势？
+## Cimi 有什么优势？
 
 当我们在开发组件库或者其他开源工具包时，我们发一个新的 NPM 包可能需要这些工作：
 
-* 手动修改`package.json`中的`version`.
-* `git add .`、`git commit -m "xxxx"`生成一个提交.
-* `git push origin master` 推送到远端.
-* 在github中打一个新`tag`.
-* `npm publish`将代码提交到NPM.
+- 手动修改`package.json`中的`version`.
+- `git add .`、`git commit -m "xxxx"`生成一个提交.
+- `git push origin master` 推送到远端.
+- 在 github 中打一个新`tag`.
+- `npm publish`将代码提交到 NPM.
 
 听起来是不是很麻烦？而有了`cimi`，你只需要一行简单的代码:
 
@@ -27,7 +27,7 @@ Cimi自动生成新版本号，自动生成commit message，创建tag，push到g
 
 就可以完成上面所有事情。
 
-## Cimi修改版本规则
+## Cimi 修改版本规则
 
 `Cimi`共有六种规则，来进行发包，其实也就是确定版本号。
 
@@ -94,6 +94,8 @@ Options:
     $ cimi upgradeBeta [branch] (default: master)
 
 ```
+
+![image](https://user-images.githubusercontent.com/32048580/192793164-398ffe40-1ed9-4a66-b3bb-a7fe0a8152a1.png)
 
 ## LICENSE
 

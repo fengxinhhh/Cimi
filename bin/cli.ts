@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-const program = require("commander");
-const pkg = require("../package.json");
-const { green, red, cyan } = require("chalk");
-const cimi = require("../index.ts");
+const program = require('commander');
+const pkg = require('../package.json');
+const { green, red, cyan } = require('chalk');
+const cimi = require('../index.ts');
 
 program
-  .name("cimi")
+  .name('cimi')
   .description(
     'A fully automatic NPM package tool, one line command to help you "git replase, create git tag, release NPM package"'
   )
@@ -21,7 +21,7 @@ program
   // .option("minorBeta", "minor your new beta npm package")
   // .option("majorBeta", "major your new beta npm package")
   .on('--help', () => {
-    console.log('\n  Tip:\n')
+    console.log('\n  Tip:\n');
     console.log(
       '    You should run this script in the root directory of you project or run by npm scripts.'
     )
@@ -39,8 +39,7 @@ program
   })
   .parse(process.argv);
 
-
-cimi(program).catch((err) => {
+cimi(program).catch(err => {
   console.error(`${red(err)}`);
   process.exit(1);
 });

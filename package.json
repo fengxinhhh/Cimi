@@ -22,7 +22,9 @@
     "major": "cimi major main",
     "patchBeta": "cimi patchBeta main",
     "minorBeta": "cimi minorBeta main",
-    "majorBeta": "cimi majorBeta main"
+    "majorBeta": "cimi majorBeta main",
+    "prepare": "husky install",
+    "prettier": "prettier -w *  --ignore-unknown"
   },
   "bugs": {
     "url": "https://github.com/fengxinhhh/Cimi/issues"
@@ -33,12 +35,16 @@
   "dependencies": {
     "chalk": "^2.4.1",
     "commander": "^9.4.0",
+    "inquirer": "^8.2.4",
     "tsup": "^6.2.3"
   },
   "devDependencies": {
     "@types/node": "^18.7.20",
+    "base-prettier-config": "^1.0.2",
     "eslint": "^8.23.0",
-    "inquirer": "^8.2.4",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
     "typescript": "^4.8.2"
   },
   "publishConfig": {
@@ -52,7 +58,7 @@
     "minify": true,
     "splitting": false,
     "clean": true,
-    "dts": true,
+    "dts": false,
     "skipNodeModulesBundle": true
   }
 }
