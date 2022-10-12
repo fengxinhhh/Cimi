@@ -26,6 +26,7 @@ module.exports = async function(options) {
   //获取新的版本号
   function getNewVersion(oldVersion) {
     let [major, minor, patch] = oldVersion.split('.')
+    const betaVersion = oldVersion?.split('beta')[1];
     if(patch.length > 2 && patch.includes('-beta')) {
       patch = patch.split('-')[0];
     }
@@ -36,12 +37,16 @@ module.exports = async function(options) {
         return `${major}.${+minor + 1}.${patch}`
       case 'major':
         return `${+major + 1}.${minor}.${patch}`
-      case 'patchBeta':
-        return `${major}.${minor}.${+patch + 1}-beta`
-      case 'minorBeta':
-        return `${major}.${+minor + 1}.${patch}-beta`
-      case 'majorBeta':
-        return `${+major + 1}.${minor}.${patch}-beta`
+      case 'beta': 
+        return `${major}.${minor}.${patch}-beta`
+      case 'upgradeBeta':
+        return `${major}.${minor}.${patch}-beta${+betaVersion + 1}`
+      // case 'patchBeta':
+      //   return `${major}.${minor}.${+patch + 1}-beta`
+      // case 'minorBeta':
+      //   return `${major}.${+minor + 1}.${patch}-beta`
+      // case 'majorBeta':
+      //   return `${+major + 1}.${minor}.${patch}-beta`
       case 'manual' : {
           return inquirer
             .prompt([
@@ -53,9 +58,11 @@ module.exports = async function(options) {
                   `patch ${major}.${minor}.${+patch + 1}`,
                   `patch-beta ${major}.${minor}.${+patch + 1}-beta`,
                   `major ${major}.${+minor + 1}.${patch}`,
-                  `major-beta ${major}.${+minor + 1}.${patch}-beta`,
-                  `major ${+major + 1}.${minor}.${patch}`,
-                  `major-beta ${+major + 1}.${minor}.${patch}-beta`,
+                  // `major-beta ${major}.${+minor + 1}.${patch}-beta`,
+                  // `major ${+major + 1}.${minor}.${patch}`,
+                  // `major-beta ${+major + 1}.${minor}.${patch}-beta`,
+                  `${major}.${minor}.${patch}-beta`,
+                  `${major}.${minor}.${patch}-beta${+betaVersion + 1}`
                 ],
               },
             ])
