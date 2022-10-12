@@ -21,7 +21,7 @@
     "minor": "cimi minor main",
     "major": "cimi major main",
     "beta": "cimi beta main",
-    "upgrade": "cimi upgrade main",
+    "upgrade": "cimi upgradeBeta main",
     "prepare": "husky install",
     "prettier": "prettier -w *  --ignore-unknown"
   },
