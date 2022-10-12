@@ -24,7 +24,7 @@
     "minorBeta": "cimi minorBeta main",
     "majorBeta": "cimi majorBeta main",
     "prepare": "husky install",
-    "prettier": "prettier -w **/*  --ignore-unknown"
+    "prettier": "prettier -w *  --ignore-unknown"
   },
   "bugs": {
     "url": "https://github.com/fengxinhhh/Cimi/issues"
