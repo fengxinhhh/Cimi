@@ -34,9 +34,9 @@ module.exports = async function (options) {
       case 'patch':
         return `${major}.${minor}.${+patch + 1}`;
       case 'minor':
-        return `${major}.${+minor + 1}.${patch}`;
+        return `${major}.${+minor + 1}.${0}`;
       case 'major':
-        return `${+major + 1}.${minor}.${patch}`;
+        return `${+major + 1}.${0}.${0}`;
       case 'beta':
         return `${major}.${minor}.${patch}-beta`;
       case 'upgradeBeta':

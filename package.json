@@ -1,7 +1,7 @@
 {
   "name": "cimi",
   "license": "MIT",
-  "version": "1.1.42",
+  "version": "1.2.42",
   "description": "A tool for fully automatic publishing of npm packages",
   "authors": {
     "name": "fengxin",
