@@ -8,7 +8,7 @@ const cimi = require('../index.ts');
 program
   .name('cimi')
   .description(
-    'A fully automatic NPM package tool, one line command to help you "git replase, create git tag, release NPM package"'
+    'A fully automatic NPM package tool, one line command to help you "git add/commit/push, create git tag, release NPM package"'
   )
   .version(pkg.version, '-v, --version')
   .option('manual', 'manual select your new package version')

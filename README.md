@@ -68,7 +68,7 @@ npm i cimi -D
 ```
 Usage: cimi [options]
 
-A fully automatic NPM package tool, one line command to help you "git replase, create git tag, release NPM package"
+A fully automatic NPM package tool, one line command to help you "git add/commit/push, create git tag, release NPM package"
 
 Options:
   -v, --version  output the version number
