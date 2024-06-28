@@ -17,14 +17,17 @@ module.exports = async function (options) {
     console.info(green(`Start to manual select new version to ${projectName}...`));
   }
   const newVersion = await getNewVersion(projectVersion);
-  writeNewVersion();
+  
+  // 确保在获取新版本后立即写入新版本号
+  await writeNewVersion(newVersion);
+
   console.info(green(`\nVersion: ${cyan(`${projectVersion} -> ${newVersion}`)}`));
   console.info(green(`${type} ${projectName} version to ${newVersion}`));
   await execShell();
   console.info(`\n${green('[ Cimi ]')} Release ${projectName} Success!\n`);
 
-  //获取新的版本号
-  function getNewVersion(oldVersion) {
+  // 获取新的版本号
+  async function getNewVersion(oldVersion) {
     let [major, minor, patch] = oldVersion.split('.');
     const betaVersion = oldVersion?.split('beta')[1] || 1;
     if (patch.length > 2 && patch.includes('-beta')) {
@@ -41,12 +44,6 @@ module.exports = async function (options) {
         return `${major}.${minor}.${patch}-beta`;
       case 'upgradeBeta':
         return `${major}.${minor}.${patch}-beta${+betaVersion + 1}`;
-      // case 'patchBeta':
-      //   return `${major}.${minor}.${+patch + 1}-beta`
-      // case 'minorBeta':
-      //   return `${major}.${+minor + 1}.${patch}-beta`
-      // case 'majorBeta':
-      //   return `${+major + 1}.${minor}.${patch}-beta`
       case 'manual': {
         return inquirer
           .prompt([
@@ -56,26 +53,25 @@ module.exports = async function (options) {
               message: 'please select new version',
               choices: [
                 `patch ${major}.${minor}.${+patch + 1}`,
-                // `patch-beta ${major}.${minor}.${+patch + 1}-beta`,
                 `minor ${major}.${+minor + 1}.${patch}`,
-                // `major-beta ${major}.${+minor + 1}.${patch}-beta`,
                 `major ${+major + 1}.${minor}.${patch}`,
-                // `major-beta ${+major + 1}.${minor}.${patch}-beta`,
                 `${major}.${minor}.${patch}-beta`,
                 `${major}.${minor}.${patch}-beta${+betaVersion + 1}`,
               ],
             },
           ])
-          .then(answers => {
+          .then(async answers => {
             try {
-              return answers['cimiType'].match(/(?<=\w+\s+)(\w|\.|\-)+/)[0];
+              const selectedVersion = answers['cimiType'].match(/(?<=\w+\s+)(\w|\.|\-)+/)[0];
+              // 在选择版本后立即写入新版本号
+              await writeNewVersion(selectedVersion);
+              return selectedVersion;
             } catch (err) {
               return answers['cimiType'];
             }
           })
           .catch(error => {
             if (error.isTtyError) {
-              // Prompt couldn't be rendered in the current environment
               console.log(red(`Prompt couldn't be rendered in the current environment`));
             } else {
               console.log(red(`error:${error}`));
@@ -83,14 +79,13 @@ module.exports = async function (options) {
           });
       }
       default:
-        console.error(
-          red('\nPlease write correctly update type: patch、minor、major、beta、upgradeBeta\n')
-        );
+        console.error(red('\nPlease write correctly update type: patch、minor、major、beta、upgradeBeta\n'));
         process.exit(1);
     }
   }
-  //写入新版本号，更新项目文件
-  function writeNewVersion() {
+
+  // 写入新版本号，更新项目文件
+  async function writeNewVersion(newVersion) {
     const packageJson = readFileSync(resolve(process.cwd(), 'package.json'), 'utf8');
     const newPackageJson = packageJson.replace(
       `"version": "${projectVersion}"`,
@@ -99,7 +94,8 @@ module.exports = async function (options) {
     writeFileSync(resolve(process.cwd(), 'package.json'), newPackageJson);
     console.info(green('\nUpdate package.json success!'));
   }
-  //执行整个流程的命令
+
+  // 执行整个流程的命令
   async function execShell() {
     const echo1 = `${green('[ 1 / 3 ]')} ${cyan(`Commit and push to ${branch} branch`)}`;
     const part1 = [
